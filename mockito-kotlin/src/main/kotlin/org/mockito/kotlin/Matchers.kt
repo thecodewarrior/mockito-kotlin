@@ -38,6 +38,10 @@ fun <T> eq(value: T): T {
 fun <T> same(value: T): T {
     return ArgumentMatchers.same(value) ?: value
 }
+/** Matches any object, excluding nulls. */
+inline fun <reified T : Any> anyNotNull(): T {
+    return ArgumentMatchers.any(T::class.java) ?: createInstance()
+}
 
 /** Matches any object, including nulls. */
 inline fun <reified T : Any> any(): T {
