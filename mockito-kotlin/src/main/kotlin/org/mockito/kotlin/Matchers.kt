@@ -39,13 +39,8 @@ fun <T> same(value: T): T {
     return ArgumentMatchers.same(value) ?: value
 }
 
-/** Matches any object, excluding nulls. */
+/** Matches any object, including nulls. */
 inline fun <reified T : Any> any(): T {
-    return ArgumentMatchers.any(T::class.java) ?: createInstance()
-}
-
-/** Matches anything, including nulls. */
-inline fun <reified T : Any> anyOrNull(): T {
     return ArgumentMatchers.any<T>() ?: createInstance()
 }
 
